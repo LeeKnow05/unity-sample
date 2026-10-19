@@ -1,0 +1,16 @@
+name: Gyde
+on: pull_request
+permissions:
+  contents: read
+  pull-requests: write
+jobs:
+  gyde:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/gyde
+        with:
+          api-key: ${{ secrets.GYDE_API_KEY }}
+          api-url: https://accessed-avoid-coaches-myspace.trycloudflare.com
+          fail-on: high
+          include-ai: 'false'
